@@ -1,0 +1,23 @@
+version: '3.1'
+
+services:
+  dcbackend:
+    build: ./webapi
+    image: yusufsina/training-backend
+    container_name: instance_dcbackend
+    ports:
+      - 5000:80
+    networks:
+      - frontend
+  
+  dcfrontend:
+    build: ./myvue
+    image: yusufsina/training-frontend
+    container_name: instance_dcfrontend
+    ports:
+      - 8080:80
+    networks:
+      - frontend
+
+networks:
+  frontend:
